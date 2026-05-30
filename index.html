@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-HK" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSE 中文十二篇範文精讀與註解</title>
+    <!-- 引入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入 Google Fonts (Noto Serif HK 適合文言文的典雅風格) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+HK:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind 自訂配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'serif': ['"Noto Serif HK"', 'serif'],
+                    },
+                    colors: {
+                        'classic-primary': '#4a5568', /* 沉穩的深灰色 */
+                        'classic-secondary': '#e2e8f0', /* 淺灰背景 */
+                        'classic-accent': '#8b5cf6', /* 紫色強調，帶點學術感 */
+                        'classic-paper': '#fdfbf7', /* 仿古紙張顏色 */
+                        'classic-ink': '#1a202c', /* 墨色 */
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* 基礎字體設定 */
+        body {
+            font-family: 'Noto Serif HK', serif;
+            background-color: #f8fafc;
+            color: #1a202c;
+        }
+        /* 卡片懸浮動畫 */
+        .article-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- 導航欄 -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <!-- 左側 Logo 與標題 -->
+                <div class="flex items-center">
+                    <a href="#" class="flex items-center gap-2 group">
+                        <svg class="h-8 w-8 text-classic-accent group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        </svg>
+                        <span class="font-bold text-xl text-classic-primary tracking-wider">文言精讀</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主視覺區 (Hero Section) -->
+    <main class="flex-grow">
+        <section class="relative bg-classic-paper overflow-hidden border-b border-gray-200">
+            <!-- 裝飾性背景圖案 (使用 SVG 簡化代替圖片) -->
+            <div class="absolute top-0 right-0 -mr-20 -mt-20 opacity-5 pointer-events-none">
+                <svg width="400" height="400" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" />
+                </svg>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 relative z-10 flex flex-col md:flex-row items-center">
+                <!-- 左側文案 -->
+                <div class="md:w-1/2 text-center md:text-left md:pr-10 mb-12 md:mb-0">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-classic-ink mb-6 leading-tight tracking-wide">
+                        攻克 DSE 中文 <br>
+                        <span class="text-classic-accent">十二篇文言範文</span>
+                    </h1>
+                    <p class="text-lg text-gray-600 mb-8 max-w-xl mx-auto md:mx-0 leading-relaxed">
+                        提供最詳盡的白話語譯、字詞註釋、段落大意及寫作手法分析。助你輕鬆理解古人智慧，掌握考試重點，奪取星級成績。
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
+                        <a href="#articles-section" class="px-8 py-3 bg-classic-accent text-white font-semibold rounded-lg hover:bg-purple-700 transition shadow-md hover:shadow-lg text-lg text-center">
+                            開始閱讀
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 右側視覺插圖 (使用純 CSS 構建仿書本堆疊效果) -->
+                <div class="md:w-1/2 flex justify-center lg:justify-end">
+                    <div class="relative w-72 h-96 sm:w-80 sm:h-[400px]">
+                        <!-- 底層書本 -->
+                        <div class="absolute inset-0 bg-gray-200 rounded-xl transform translate-y-6 translate-x-6 border border-gray-300 shadow-xl"></div>
+                        <div class="absolute inset-0 bg-white rounded-xl transform translate-y-3 translate-x-3 border border-gray-300 shadow-xl flex items-center justify-center opacity-80">
+                            <span class="text-gray-400 font-serif writing-vertical text-xl tracking-widest">論仁、論孝、論君子</span>
+                        </div>
+                        <!-- 頂層主要書本 -->
+                        <div class="absolute inset-0 bg-classic-paper rounded-xl border border-gray-300 shadow-2xl p-6 flex flex-col justify-between overflow-hidden">
+                            <!-- 書脊裝飾 -->
+                            <div class="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-gray-200 to-transparent border-r border-gray-200"></div>
+                            
+                            <div class="pl-6 pt-4 text-center z-10 relative">
+                                <div class="w-12 h-1 bg-classic-accent mx-auto mb-4"></div>
+                                <h2 class="text-3xl font-bold text-classic-ink tracking-widest mb-2" style="writing-mode: vertical-rl; text-orientation: upright;">指定文言</h2>
+                                <h2 class="text-3xl font-bold text-classic-ink tracking-widest mb-8" style="writing-mode: vertical-rl; text-orientation: upright;">經典學習</h2>
+                            </div>
+                            
+                            <div class="pl-6 flex justify-between items-end z-10">
+                                <div class="w-16 h-16 border-2 border-classic-accent rounded-full flex items-center justify-center text-classic-accent font-bold text-xl">
+                                    DSE
+                                </div>
+                                <p class="text-sm text-gray-500 font-serif">香港考試及評核局<br>建議篇目</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 十二篇範文網格區 -->
+        <section id="articles-section" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-classic-ink mb-4 relative inline-block">
+                        十二篇指定篇章
+                        <span class="absolute -bottom-2 left-1/4 w-1/2 h-1 bg-classic-accent rounded"></span>
+                    </h2>
+                    <p class="text-gray-600 mt-4 max-w-2xl mx-auto">點擊篇章標題即可進入詳細學習頁面，包含原文、語譯、註釋及賞析。</p>
+                </div>
+
+                <!-- 網格容器 -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    
+                    <!-- 卡片 1 -->
+                    <a href="#" class="article-card bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:border-classic-accent/30 group block relative">
+                        <!-- 裝飾邊角 -->
+                        <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-gray-50 to-transparent z-0"></div>
+                        <div class="p-6 relative z-10">
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-xs font-semibold px-2 py-1 bg-gray-100 text-gray-600 rounded-md">先秦</span>
+                                <span class="text-gray-400 group-hover:text-classic-accent transition-colors">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </span>
+                            </div>
+                            <h3 class="text-xl font-bold text-classic-ink mb-2 group-hover:text-classic-accent transition-colors">《論語》</h3>
+                            <p class="text-sm font-medium text-gray-500 mb-3 border-b border-gray-100 pb-3">論仁、論孝、論君子</p>
+                            <p class="text-sm text-gray-600 line-clamp-2">孔子語錄，探討儒家核心價值觀，包含仁愛、孝道及君子應有的品格修養。</p>
+                        </div>
+                    </a>
+
+                    <!-- 卡片 2 -->
+                    <a href="#" class="article-card bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:border-classic-accent/30 group block relative">
+                        <div class="p-6 relative z-10">
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-xs font-semibold px-2 py-1 bg-gray-100 text-gray-600 rounded-md">先秦</span>
+                                <span class="text-gray-400 group-hover:text-classic-accent">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                                </span>
+                            </div>
+                            <h3 class="text-xl font-bold text-classic-ink mb-2 group-hover:text-classic-accent transition-colors">《孟子》</h3>
+                            <p class="text-sm font-medium text-gray-500 mb-3 border-b border-gray-100 pb-3">魚我所欲也</p>
+                            <p class="text-sm text-gray-600 line-clamp-2">孟子以魚與熊掌設喻，論述生與義不可兼得時，應捨生取義的道德觀。</p>
+                        </div>
+                    </a>
+
+                    <!-- 卡片 3 -->
+                    <a href="#" class="article-card bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:border-classic-accent/30 group block relative">
+                        <div class="p-6 relative z-10">
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-xs font-semibold px-2 py-1 bg-gray-100 text-gray-600 rounded-md">先秦</span>
+                                <span class="text-gray-400 group-hover:text-classic-accent">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                                </span>
+                            </div>
+                            <h3 class="text-xl font-bold text-classic-ink mb-2 group-hover:text-classic-accent transition-colors">《莊子》</h3>
+                            <p class="text-sm font-medium text-gray-500 mb-3 border-b border-gray-100 pb-3">逍遙遊 (節錄)</p>
+                            <p class="text-sm text-gray-600 line-clamp-2">透過鯤鵬展翅等寓言，闡述莊子追求精神絕對自由，擺脫世俗名利束縛的思想。</p>
+                        </div>
+                    </a>
+
+                    <!-- 卡片 4 -->
+                    <a href="#" class="article-card bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:border-classic-accent/30 group block relative">
+                        <div class="p-6 relative z-10">
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-xs font-semibold px-2 py-1 bg-gray-100 text-gray-600 rounded-md">先秦</span>
+                                <span class="text-gray-400 group-hover:text-classic-accent">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                                </span>
+                            </div>
+                            <h3 class="text-xl font-bold text-classic-ink mb-2 group-hover:text-classic-accent transition-colors">勸學 (節錄)</h3>
+                            <p class="text-sm font-medium text-gray-500 mb-3 border-b border-gray-100 pb-3">荀子</p>
+                            <p class="text-sm text-gray-600 line-clamp-2">論述學習的重要意義、態度和方法，強調積累和堅持不懈。</p>
+                        </div>
+                    </a>
+
+                    <!-- 卡片 5 -->
+                    <a href="#" class="article-card bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:border-classic-accent/30 group block relative">
+                        <div class="p-6 relative z-10">
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-xs font-semibold px-2 py-1 bg-gray-100 text-gray-600 rounded-md">漢</span>
+                                <span class="text-gray-400 group-hover:text-classic-accent">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                                </span>
+                            </div>
+                            <h3 class="text-xl font-bold text-classic-ink mb-2 group-hover:text-classic-accent transition-colors">出師表</h3>
+                            <p class="text-sm font-medium text-gray-500 mb-3 border-b border-gray-100 pb-3">諸葛亮</p>
+                            <p class="text-sm text-gray-600 line-clamp-2">諸葛亮出征前寫給後主劉禪的奏章，苦口婆心勸勉君主，表達鞠躬盡瘁之情。</p>
+                        </div>
+                    </a>
+
+                    <!-- 卡片 6 -->
+                    <a href="#" class="article-card bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:border-classic-accent/30 group block relative">
+                        <div class="p-6 relative z-10">
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-xs font-semibold px-2 py-1 bg-gray-100 text-gray-600 rounded-md">唐</span>
+                                <span class="text-gray-400 group-hover:text-classic-accent">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                                </span>
+                            </div>
+                            <h3 class="text-xl font-bold text-classic-ink mb-2 group-hover:text-classic-accent transition-colors">師說</h3>
+                            <p class="text-sm font-medium text-gray-500 mb-3 border-b border-gray-100 pb-3">韓愈</p>
+                            <p class="text-sm text-gray-600 line-clamp-2">批評當時恥於從師的社會風氣，論述教師的作用以及從師學習的原則。</p>
+                        </div>
+                    </a>
+
+                    <!-- 卡片 7 -->
+                    <a href="#" class="article-card bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:border-classic-accent/30 group block relative">
+                        <div class="p-6 relative z-10">
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-xs font-semibold px-2 py-1 bg-gray-100 text-gray-600 rounded-md">唐</span>
+                                <span class="text-gray-400 group-hover:text-classic-accent">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                                </span>
+                            </div>
+                            <h3 class="text-xl font-bold text-classic-ink mb-2 group-hover:text-classic-accent transition-colors">始得西山宴遊記</h3>
+                            <p class="text-sm font-medium text-gray-500 mb-3 border-b border-gray-100 pb-3">柳宗元</p>
+                            <p class="text-sm text-gray-600 line-clamp-2">記錄發現西山奇景的過程，借景抒情，表達被貶謫後在大自然中獲得的精神解脫。</p>
+                        </div>
+                    </a>
+
+                    <!-- 卡片 8 -->
+                    <a href="#" class="article-card bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:border-classic-accent/30 group block relative">
+                        <div class="p-6 relative z-10">
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-xs font-semibold px-2 py-1 bg-gray-100 text-gray-600 rounded-md">宋</span>
+                                <span class="text-gray-400 group-hover:text-classic-accent">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                                </span>
+                            </div>
+                            <h3 class="text-xl font-bold text-classic-ink mb-2 group-hover:text-classic-accent transition-colors">岳陽樓記</h3>
+                            <p class="text-sm font-medium text-gray-500 mb-3 border-b border-gray-100 pb-3">范仲淹</p>
+                            <p class="text-sm text-gray-600 line-clamp-2">借重修岳陽樓一事，抒發「先天下之憂而憂，後天下之樂而樂」的政治抱負。</p>
+                        </div>
+                    </a>
+
+                    <!-- 卡片 9 -->
+                    <a href="#" class="article-card bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:border-classic-accent/30 group block relative">
+                        <div class="p-6 relative z-10">
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-xs font-semibold px-2 py-1 bg-gray-100 text-gray-600 rounded-md">宋</span>
+                                <span class="text-gray-400 group-hover:text-classic-accent">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                                </span>
+                            </div>
+                            <h3 class="text-xl font-bold text-classic-ink mb-2 group-hover:text-classic-accent transition-colors">六國論</h3>
+                            <p class="text-sm font-medium text-gray-500 mb-3 border-b border-gray-100 pb-3">蘇洵</p>
+                            <p class="text-sm text-gray-600 line-clamp-2">分析戰國六國滅亡的原因在於「弊在賂秦」，藉古諷今，警告北宋朝廷勿重蹈覆轍。</p>
+                        </div>
+                    </a>
+
+                    <!-- 卡片 10 (詩歌類合併展示或代表) -->
+                    <a href="#" class="article-card bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:border-classic-accent/30 group block relative">
+                        <div class="p-6 relative z-10">
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-xs font-semibold px-2 py-1 bg-classic-accent/10 text-classic-accent rounded-md">詩歌</span>
+                                <span class="text-gray-400 group-hover:text-classic-accent">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                                </span>
+                            </div>
+                            <h3 class="text-xl font-bold text-classic-ink mb-2 group-hover:text-classic-accent transition-colors">唐詩三首</h3>
+                            <p class="text-sm font-medium text-gray-500 mb-3 border-b border-gray-100 pb-3">王維、李白、杜甫</p>
+                            <p class="text-sm text-gray-600 line-clamp-2">包含《山居秋暝》、《月下獨酌》、《登樓》，展現盛唐不同詩人的獨特風格。</p>
+                        </div>
+                    </a>
+
+                    <!-- 卡片 11 -->
+                    <a href="#" class="article-card bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:border-classic-accent/30 group block relative">
+                        <div class="p-6 relative z-10">
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-xs font-semibold px-2 py-1 bg-classic-accent/10 text-classic-accent rounded-md">詞作</span>
+                                <span class="text-gray-400 group-hover:text-classic-accent">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                                </span>
+                            </div>
+                            <h3 class="text-xl font-bold text-classic-ink mb-2 group-hover:text-classic-accent transition-colors">宋詞三首</h3>
+                            <p class="text-sm font-medium text-gray-500 mb-3 border-b border-gray-100 pb-3">蘇軾、李清照、辛棄疾</p>
+                            <p class="text-sm text-gray-600 line-clamp-2">包含《念奴嬌》、《聲聲慢》、《青玉案》，涵蓋豪放與婉約派的代表作。</p>
+                        </div>
+                    </a>
+
+                     <!-- 卡片 12 -->
+                     <a href="#" class="article-card bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:border-classic-accent/30 group block relative">
+                        <div class="p-6 relative z-10">
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-xs font-semibold px-2 py-1 bg-classic-accent/10 text-classic-accent rounded-md">曲作</span>
+                                <span class="text-gray-400 group-hover:text-classic-accent">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                                </span>
+                            </div>
+                            <h3 class="text-xl font-bold text-classic-ink mb-2 group-hover:text-classic-accent transition-colors">元曲一首</h3>
+                            <p class="text-sm font-medium text-gray-500 mb-3 border-b border-gray-100 pb-3">馬致遠</p>
+                            <p class="text-sm text-gray-600 line-clamp-2">《天淨沙·秋思》，被譽為「秋思之祖」，以極其凝練的筆法描繪出遊子思鄉之情。</p>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 頁尾 (Footer) -->
+    <footer class="bg-classic-ink text-gray-300 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0 text-center md:text-left">
+                    <div class="flex items-center justify-center md:justify-start gap-2 mb-4">
+                        <svg class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        </svg>
+                        <span class="font-bold text-xl text-white tracking-wider">文言精讀</span>
+                    </div>
+                    <p class="text-sm text-gray-400">專為香港 DSE 考生打造的中文文言文學習平台。</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">關於我們</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">免責聲明</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">聯絡我們</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-sm text-center text-gray-500">
+                &copy; 2024 文言精讀. All rights reserved. 非官方教育網站，僅供學習參考。
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
